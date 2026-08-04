@@ -1,0 +1,25 @@
+name: Validate WebGL Control
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - public/**
+      - scripts/**
+      - .github/workflows/**
+  push:
+    branches: [main]
+    paths:
+      - public/**
+      - scripts/**
+      - .github/workflows/validate.yml
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python scripts/validate_control.py
