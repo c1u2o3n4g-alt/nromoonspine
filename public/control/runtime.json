@@ -7,11 +7,11 @@
     "message": "",
     "expiresAt": "2026-08-22T12:16:03.0000000+00:00",
     "graceUntil": "2026-08-23T12:16:03.0000000+00:00",
-    "activeRelease": "2026.08.05.0521",
-    "manifestUrl": "https://c1u2o3n4g-alt.github.io/nromoonspine/releases/2026.08.05.0521/manifest.json",
-    "manifestSha256": "b168d8bf2912c65c43f39a9ff9b5f0d0fdd4ada0f64bb41d6e06ec73bb346961",
+    "activeRelease": "2026.08.16.0750",
+    "manifestUrl": "https://c1u2o3n4g-alt.github.io/nromoonspine/releases/2026.08.16.0750/manifest.json",
+    "manifestSha256": "e2b9c93f5ec826b449ae142a3305f01678f237330dc26df66771a560a674908c",
     "minimumClientVersion": "",
     "forceReload": false,
-    "revision": 1785908500638,
-    "updatedAt": "2026-08-05T05:41:40.6389532+00:00"
+    "revision": 1786868647145,
+    "updatedAt": "2026-08-16T08:24:07.1453384+00:00"
 }
