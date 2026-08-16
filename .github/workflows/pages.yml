@@ -17,20 +17,17 @@ permissions:
   id-token: write
 
 concurrency:
-  group: pages
-  cancel-in-progress: false
+  group: pages-${{ github.event_name == 'schedule' && 'expiry' || 'deploy' }}
+  cancel-in-progress: true
 
 jobs:
-  deploy:
+  update-expiry:
+    if: github.event_name == 'schedule'
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - uses: actions/configure-pages@v5
       - name: Update expiry
         run: python scripts/update_expiry.py
       - name: Commit automatic expiry
@@ -42,6 +39,18 @@ jobs:
             git commit -m "Expire WebGL mod automatically"
             git push
           fi
+
+  deploy:
+    if: github.event_name != 'schedule'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/configure-pages@v5
       - name: Build Pages artifact
         env:
           GH_TOKEN: ${{ github.token }}
